@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">    
+
+    <changeSet id="x.xx_x" author="data" >
+        <tagDatabase tag="x.xx"  />
+    </changeSet>
+     
+    <changeSet id="x.xx_x" author="data" >
+        <sql endDelimiter=";"
+             splitStatements="true"
+             stripComments="true">
+            <comment>permission</comment>
+            CREATE TABLE public.permission
+            (
+            id integer NOT NULL DEFAULT nextval('permission_id_seq'::regclass),
+            role integer NOT NULL,
+            object character varying(200) NOT NULL,
+            operation character varying(10) NOT NULL REFERENCES operation(operation),
+            type integer NOT NULL,
+            created timestamp without time zone NOT NULL DEFAULT LOCALTIMESTAMP,
+            CONSTRAINT permission_pkey PRIMARY KEY (id)
+            );
+        </sql>
+        <rollback>
+            DROP TABLE public.permission;
+        </rollback>
+    </changeSet> 
+    
+</databaseChangeLog>

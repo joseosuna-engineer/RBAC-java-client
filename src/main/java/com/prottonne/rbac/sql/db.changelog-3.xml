@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">    
+
+    <changeSet id="x.xx_x" author="data" >
+        <tagDatabase tag="x.xx"  />
+    </changeSet>
+    
+    <changeSet id="x.xx_x" author="data" >
+        <sql endDelimiter=";"
+             splitStatements="true"
+             stripComments="true">
+            <comment>operations</comment>
+            insert into operation values ('admin');
+            insert into operation values ('get');
+            insert into operation values ('edit');
+            insert into operation values ('back');
+        </sql>
+        <rollback>
+            delete from operation where operation = 'admin';
+            delete from operation where operation = 'get';
+            delete from operation where operation = 'edit';
+            delete from operation where operation = 'back';
+        </rollback>
+    </changeSet> 
+       
+</databaseChangeLog>
