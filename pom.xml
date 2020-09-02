@@ -35,6 +35,19 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        
+        <!-- Spring data JPA without tomcat pool -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.tomcat</groupId>
+                    <artifactId>tomcat-jdbc</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        
     </dependencies>
 
     <build>
